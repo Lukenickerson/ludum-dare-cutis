@@ -1,0 +1,23 @@
+{
+// SEE https://developer.chrome.com/extensions/manifest
+// Required
+"manifest_version": 2
+,"name":"Cutis for Ludum Dare"
+,"version": "0.0"
+
+// Recommended
+//,"default_locale":"en"
+,"description" : "Re-skin the Ludum Dare website"
+
+
+,"content_scripts": [
+    {
+      "matches": ["https://ludumdare.com/*","http://ludumdare.com/*"],
+	  "js": ["cutis_extension.js"]
+    }
+]
+  
+// Optional
+,"author":"Luke @deathraygames"
+  
+}
