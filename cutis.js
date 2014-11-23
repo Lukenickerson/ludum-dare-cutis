@@ -9,17 +9,19 @@ var cutis = {
 	$elt : null,
 	selectedSkinIndex : -1,
 	loadCSS : function(url, classes){
+		url = c.baseUrl + url;
 		$('<link class="' + classes + '"></link>')
 			.appendTo('head')
 			.attr({type : 'text/css', rel : 'stylesheet'})
-			.attr('href', c.baseUrl + url)
+			.attr('href', url)
 			.ready(function(){ console.log("Loaded", url); })
 		;
 	},
 	loadJS : function(url, classes){
+		url = c.baseUrl + url;
 		$('<script class="' + classes + '"></script>')
 			.appendTo('body')
-			.attr('src', c.baseUrl + url)
+			.attr('src', url)
 			.ready(function(){ console.log("Loaded", url); })
 		;
 	},
