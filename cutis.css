@@ -39,8 +39,9 @@
 		text-decoration: none;
 		transition: background 0.2s;
 	}
-	#cutis .skinList a.selected {	
-		background: #333;
+	#cutis .skinList a.selected {
+		background: #FEBA44;
+		background: rgba(255,221,68,0.5);
 	}
 	#cutis .skinList a:hover {
 		background-color: #fd4;

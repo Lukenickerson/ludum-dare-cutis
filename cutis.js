@@ -30,7 +30,7 @@ var cutis = {
 		c.$elt.find("cutis_skin_" + c.selectedSkinIndex).removeClass("selected");
 		c.selectedSkinIndex = si;
 		c.loadSkin();
-		c.$elt.find("cutis_skin_" + si).addClass("selected");
+		c.$elt.find(".cutis_skin_" + si).addClass("selected");
 	},
 	loadSkin : function(){
 		var c = this;
