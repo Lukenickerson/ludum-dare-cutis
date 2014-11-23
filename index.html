@@ -11,6 +11,7 @@
 		body {
 			text-align: center;
 			font-family: 'Roboto Slab', serif;
+			padding: 0 1em;
 		}
 		header, footer {
 			font-family: 'Fugaz One', cursive;
@@ -26,11 +27,6 @@
 		}
 		.ludumdare {
 			color: #f94;
-		}
-		.latin {
-			color: #333;
-			opacity: 0.5;
-			display: none;
 		}
 		h1 {
 			font-family: 'Gloria Hallelujah', cursive;
@@ -53,7 +49,6 @@
 <body>
 	<header>
 		<span class="title">Cutis</span> 
-		<span class="latin">(latin for "skin")</span>
 		<span class="subtitle">for <span class="ludumdare">Ludum Dare</span></span>
 		<a href="https://github.com/Lukenickerson/ludum-dare-cutis">
 			<img style="position: absolute; top: 0; right: 0; border: 0;" 
@@ -64,7 +59,8 @@
 	</header>
 	<main>
 		<h1>What is Cutis?</h1>
-		<p>Cutis (latin for "skin") is a way to re-skin the 
+		<p>Cutis (<a href="http://en.wiktionary.org/wiki/cutis">latin for "skin"</a>) 
+			is a way to re-skin the 
 			<a href="http://ludumdare.com/">Ludum Dare website</a>,
 			home of the largest global game jam community.
 			People all have different opinions on how they would
@@ -89,24 +85,16 @@
 			(aka. <a href="https://twitter.com/mikekasprzak">@mikekasprzak</a>, aka. PoV)
 			to add it!
 		</p>
-		<!--- NEVERMIND, THIS DOESN'T WORK
-		<li>
-			One way is to run some JavaScript in the page. This
-			is meant for developers/experimentation only.
-			When you're at <a href="http://ludumdare.com/">ludumdare.com</a>,
-			go to the developer tools (F12), switch to the Console,
-			and paste in the following code and hit Enter:
-			<pre>
-				$('<script>').appendTo('body').attr('src', 'http://lukenickerson.github.io/ludum-dare-cutis/cutis.js');
-			</pre>
-		</li>
-		--->
 		<p>
-			To give it a try, mouse-over the "SKINS" box at the bottom
+			To give it a try on this page, 
+			mouse-over the "SKINS" box at the bottom
 			right of this page and select a skin.
 		</p>
+		
 		<h1>How can I contribute?</h1>
-		<p>You can make your own skins and share them with the community.
+		<p>
+			You can make your own skins and share them with the community,
+			or offer suggestions and advice via GitHub issues.
 			Please read the 
 			<a href="https://github.com/Lukenickerson/ludum-dare-cutis/blob/gh-pages/CONTRIBUTING.md">
 				CONTRIBUTING document

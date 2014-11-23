@@ -1,5 +1,12 @@
 # Contributing to Cutis
 
+## Adding an issue (bug, suggestion, etc.)
+
+Please feel free to add a new issue if you'd like 
+to report a bug or suggest a new enhancement.
+
+## Adding a Skin
+
 1. Fork this project
 1. Create a `.css` and `.js` for your skin. For the sake of consistency, 
 please use the same name for both files, and use snake_case (lowercase and replace spaces with underscores).
