@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Cutis - Re-skinning Widget for Ludum Dare</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!--- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> --->
+	<link href='http://fonts.googleapis.com/css?family=Fugaz+One|Gloria+Hallelujah|Roboto+Slab' rel='stylesheet' type='text/css'>
+	<style>
+		/* homepage styles */
+		body {
+			text-align: center;
+			font-family: 'Roboto Slab', serif;
+		}
+		header, footer {
+			font-family: 'Fugaz One', cursive;
+		}
+		.title {
+			font-size: 500%;
+		}
+		.subtitle {
+			display: inline-block;
+			font-size: 200%;
+			color: #999;
+			margin-left: 0.5em;
+		}
+		.ludumdare {
+			color: #f94;
+		}
+		.latin {
+			color: #333;
+			opacity: 0.5;
+			display: none;
+		}
+		h1 {
+			font-family: 'Gloria Hallelujah', cursive;
+		}
+		main {
+			margin: 1em auto;
+			max-width: 34em;
+		}
+		footer {
+			margin-top: 5em;
+			padding: 2em 0;
+			font-size: 80%;
+		}
+		.license {
+			font-family: 'Roboto Slab', serif;
+		}
+	</style>
+	
+</head>
+<body>
+	<header>
+		<span class="title">Cutis</span> 
+		<span class="latin">(latin for "skin")</span>
+		<span class="subtitle">for <span class="ludumdare">Ludum Dare</span></span>
+		<a href="https://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>		
+	</header>
+	<main>
+		<h1>What is Cutis?</h1>
+		<p>Cutis (latin for "skin") is a way to re-skin the 
+			<a href="http://ludumdare.com/">Ludum Dare website</a>,
+			home of the largest global game jam community.
+			People all have different opinions on how they would
+			like the Ludum Dare site to look, so Cutis will give
+			the choice to the users.
+		</p>
+		
+		<h1>How does it work?</h1>
+		<p>In order for it to work, a JavaScript file needs to run in your 
+			browser while you're at the Ludum Dare site. One way to do this
+			is to use a browser extension. This is still in the works. 
+			The other way is if the cutis.js file
+			is included in Ludum Dare's main theme - but for that 
+			we'll have to ask Mike 
+			(aka. <a href="https://twitter.com/mikekasprzak">@mikekasprzak</a>, aka. PoV)
+			to add it!
+		</p>
+		<h1>How can I contribute?</h1>
+		<p>You can make your own skins and share them with the community.
+			Please read the 
+			<a href="">CONTRIBUTING document</a> for more information.
+		</p>
+		
+		
+	</main>
+	<footer>
+		Made in 11/2014 by <a href="https://twitter.com/lukenickerson">Luke</a>
+		<p class="license">
+			<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+			<img alt="Creative Commons License" style="border-width:0" 
+			src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a>
+			<br />This work is licensed under a 
+			<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+				Creative Commons Attribution-ShareAlike 4.0 International License
+			</a>.
+			<br />
+			The software is licensed under MIT.
+		</p>
+	</footer>
+	
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="cutis.js"></script>
+	
+</body>
+</html>
