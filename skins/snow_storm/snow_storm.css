@@ -5,3 +5,10 @@ body {
 a, a:visited {
 	color: #99f;
 }
+#status .section,
+#body,
+#header,
+#header .body,
+#header .headline {
+	background: #def;
+}
