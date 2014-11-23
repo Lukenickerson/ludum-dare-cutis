@@ -12,14 +12,14 @@ var cutis = {
 		$('<link class="' + classes + '"></link>')
 			.appendTo('head')
 			.attr({type : 'text/css', rel : 'stylesheet'})
-			.attr('href', url)
+			.attr('href', c.baseUrl + url)
 			.ready(function(){ console.log("Loaded", url); })
 		;
 	},
 	loadJS : function(url, classes){
 		$('<script class="' + classes + '"></script>')
 			.appendTo('body')
-			.attr('src', url)
+			.attr('src', c.baseUrl + url)
 			.ready(function(){ console.log("Loaded", url); })
 		;
 	},
@@ -36,34 +36,45 @@ var cutis = {
 		console.log("Load Skin", c.selectedSkinIndex, s);
 		c.removeSkins();
 		if (!s.dir) s.dir = s.base;
-		c.loadCSS(c.baseUrl + "skins/" + s.dir + "/" + s.base + ".css", "cutis_skin_file");
-		c.loadJS(c.baseUrl + "skins/" + s.dir + "/" + s.base + ".js", "cutis_skin_file");
+		c.loadCSS("skins/" + s.dir + "/" + s.base + ".css", "cutis_skin_file");
+		c.loadJS("skins/" + s.dir + "/" + s.base + ".js", "cutis_skin_file");
 	},
 	removeSkins : function(){
 		$('.cutis_skin_file').remove();
 	},
 	loadSkinList : function(){
 		var c = this;
+		//c.loadJS("skin_list.js", "cutis_skin_list");
+		
 		// TEST 1
+		/*
 		$.getJSON(
 			c.baseUrl + "skin_list.json" 
-			+ "?callback=?" // Make JSONP (http://stackoverflow.com/a/10872804/1766230)
+			+ "?callback=data" // Make JSONP (http://stackoverflow.com/a/10872804/1766230)
 		).done(function(d){
 			console.log("Loaded", d);
 			c.skins = d;
 			c.drawSkinList();
 		}).fail(function(){
-			console.log(arguments);
+			console.error("AJAX Fail", arguments);
 		});
+		*/
+		
 		// TEST 2
 		$.ajax({
-			url: c.baseUrl + "skin_list.json"
+			url: c.baseUrl + "skin_list.jsonp"
+			,contentType : "application/json"
 			,dataType: "jsonp"
-		}).done(function(){
+			,jsonpCallback : "data"
+		}).done(function(d){
 			console.log(arguments);
+			console.log("Loaded", d);
+			c.skins = d;
+			c.drawSkinList();
 		}).fail(function(){
-			console.log(arguments);
+			console.error("AJAX Fail", arguments);
 		});
+
 	},
 	drawSkinList : function(){
 		var c = this;
@@ -105,7 +116,7 @@ var cutis = {
 		var c = this;
 		c.build();
 		c.loadSkinList();
-		c.loadCSS(c.baseUrl + "cutis.css");
+		c.loadCSS("cutis.css");
 		$('body')
 			.find('#' + c.id).remove().end()
 			.append(c.$elt);
