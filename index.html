@@ -55,7 +55,12 @@
 		<span class="title">Cutis</span> 
 		<span class="latin">(latin for "skin")</span>
 		<span class="subtitle">for <span class="ludumdare">Ludum Dare</span></span>
-		<a href="https://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>		
+		<a href="https://github.com/Lukenickerson/ludum-dare-cutis">
+			<img style="position: absolute; top: 0; right: 0; border: 0;" 
+				src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" 
+				alt="Fork me on GitHub" 
+				data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png">
+		</a>		
 	</header>
 	<main>
 		<h1>What is Cutis?</h1>
@@ -69,24 +74,45 @@
 		
 		<h1>How does it work?</h1>
 		<p>In order for it to work, a JavaScript file needs to run in your 
-			browser while you're at the Ludum Dare site. One way to do this
-			is to use a browser extension. This is still in the works. 
-			The other way is if the cutis.js file
-			is included in Ludum Dare's main theme - but for that 
-			we'll have to ask Mike 
-			(aka. <a href="https://twitter.com/mikekasprzak">@mikekasprzak</a>, aka. PoV)
-			to add it!
+			browser while you're at the Ludum Dare site. There are
+			a couple of ways to do this:
+			One way is to use a browser extension. 
+				This is still in the works. 
+			
+			The best solution is if the cutis.js file
+				is included in Ludum Dare's main theme - but for that 
+				we'll have to ask Mike 
+				(aka. <a href="https://twitter.com/mikekasprzak">@mikekasprzak</a>, aka. PoV)
+				to add it!
+		</p>
+		<!--- NEVERMIND, THIS DOESN'T WORK
+		<li>
+			One way is to run some JavaScript in the page. This
+			is meant for developers/experimentation only.
+			When you're at <a href="http://ludumdare.com/">ludumdare.com</a>,
+			go to the developer tools (F12), switch to the Console,
+			and paste in the following code and hit Enter:
+			<pre>
+				$('<script>').appendTo('body').attr('src', 'http://lukenickerson.github.io/ludum-dare-cutis/cutis.js');
+			</pre>
+		</li>
+		--->
+		<p>
+			To give it a try, mouse-over the "SKINS" box at the bottom
+			right of this page.
 		</p>
 		<h1>How can I contribute?</h1>
 		<p>You can make your own skins and share them with the community.
 			Please read the 
-			<a href="">CONTRIBUTING document</a> for more information.
+			<a href="https://github.com/Lukenickerson/ludum-dare-cutis/blob/gh-pages/CONTRIBUTING.md">
+				CONTRIBUTING document
+			</a> for more information.
 		</p>
 		
 		
 	</main>
 	<footer>
-		Made in 11/2014 by <a href="https://twitter.com/lukenickerson">Luke</a>
+		Made in 11/2014 by <a href="https://twitter.com/deathraygames">Luke</a>
 		<p class="license">
 			<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
 			<img alt="Creative Commons License" style="border-width:0" 
@@ -96,7 +122,8 @@
 				Creative Commons Attribution-ShareAlike 4.0 International License
 			</a>.
 			<br />
-			The software is licensed under MIT.
+			The software is <a href="https://github.com/Lukenickerson/ludum-dare-cutis/blob/gh-pages/LICENSE.md">
+				licensed under the MIT License</a>.
 		</p>
 	</footer>
 	
