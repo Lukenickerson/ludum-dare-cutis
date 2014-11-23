@@ -27,7 +27,7 @@ var cutis = {
 	},
 	selectSkin : function(si){
 		var c = this;
-		c.$elt.find("cutis_skin_" + c.selectedSkinIndex).removeClass("selected");
+		c.$elt.find(".cutis_skin_" + c.selectedSkinIndex).removeClass("selected");
 		c.selectedSkinIndex = si;
 		c.loadSkin();
 		c.$elt.find(".cutis_skin_" + si).addClass("selected");
@@ -76,7 +76,7 @@ var cutis = {
 		var $s = $(
 			'<div class="skins"><p>Select a skin:</p>'
 			+ '<ul class="skinList"></ul>'
-			+ '<p>Skins provided by <a href="' + c.baseUrl + '">Cutis</a>.</p>'
+			+ '<p>Skins provided by the community via <a href="' + c.baseUrl + '">Cutis</a>.</p>'
 			+ '</div>'
 			);
 		$s.find('.skinList').on("click", "a", function(e){
