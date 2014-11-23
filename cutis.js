@@ -1,20 +1,5 @@
-/* TO DO
-	
-	* Visually show which is selected
-	* deploy via Github
-	* Extension
-	
-	* Save choice to localStorage and reload
-	* X for closing
-	
-	* Get interest from other designers
-	
-	
-	* Write contributing doc
-	* Hide capability
-	* Reset capability	
-	* Test in IE
-	* don't double-load anything
+/*
+	cutis.js
 */
 
 var cutis = {
@@ -24,7 +9,6 @@ var cutis = {
 	$elt : null,
 	selectedSkinIndex : -1,
 	loadCSS : function(url, classes){
-		console.log("Load " + url);
 		$('<link class="' + classes + '"></link>')
 			.appendTo('head')
 			.attr({type : 'text/css', rel : 'stylesheet'})
@@ -61,7 +45,7 @@ var cutis = {
 	loadSkinList : function(){
 		var c = this;
 		$.getJSON(
-			c.baseUrl + "skin_list.json"
+			c.baseUrl + "skin_list.json" + "?callback=?"
 		).done(function(d){
 			console.log("Loaded", d);
 			c.skins = d;
