@@ -18,7 +18,7 @@ var cutis = {
 		;
 	},
 	loadJS : function(url, classes){
-		url = c.baseUrl + url;
+		url = this.baseUrl + url;
 		$('<script class="' + classes + '"></script>')
 			.appendTo('body')
 			.attr('src', url)
@@ -46,31 +46,14 @@ var cutis = {
 	},
 	loadSkinList : function(){
 		var c = this;
-		//c.loadJS("skin_list.js", "cutis_skin_list");
-		
-		// TEST 1
-		/*
-		$.getJSON(
-			c.baseUrl + "skin_list.json" 
-			+ "?callback=data" // Make JSONP (http://stackoverflow.com/a/10872804/1766230)
-		).done(function(d){
-			console.log("Loaded", d);
-			c.skins = d;
-			c.drawSkinList();
-		}).fail(function(){
-			console.error("AJAX Fail", arguments);
-		});
-		*/
-		
-		// TEST 2
 		$.ajax({
-			url: c.baseUrl + "skin_list.jsonp"
-			,contentType : "application/json"
+			url: c.baseUrl + "skin_list.json.js"
+			,contentType : "application/javascript"
 			,dataType: "jsonp"
 			,jsonpCallback : "data"
 		}).done(function(d){
 			console.log(arguments);
-			console.log("Loaded", d);
+			//console.log("Loaded", d);
 			c.skins = d;
 			c.drawSkinList();
 		}).fail(function(){
