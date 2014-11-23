@@ -44,14 +44,25 @@ var cutis = {
 	},
 	loadSkinList : function(){
 		var c = this;
+		// TEST 1
 		$.getJSON(
-			c.baseUrl + "skin_list.json" + "?callback=?"
+			c.baseUrl + "skin_list.json" 
+			+ "?callback=?" // Make JSONP (http://stackoverflow.com/a/10872804/1766230)
 		).done(function(d){
 			console.log("Loaded", d);
 			c.skins = d;
 			c.drawSkinList();
 		}).fail(function(){
-			
+			console.log(arguments);
+		});
+		// TEST 2
+		$.ajax({
+			url: c.baseUrl + "skin_list.json"
+			,dataType: "jsonp"
+		}).done(function(){
+			console.log(arguments);
+		}).fail(function(){
+			console.log(arguments);
 		});
 	},
 	drawSkinList : function(){
@@ -94,7 +105,7 @@ var cutis = {
 		var c = this;
 		c.build();
 		c.loadSkinList();
-		c.loadCSS("cutis.css");
+		c.loadCSS(c.baseUrl + "cutis.css");
 		$('body')
 			.find('#' + c.id).remove().end()
 			.append(c.$elt);
