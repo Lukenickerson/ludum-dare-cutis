@@ -9,7 +9,7 @@ var cutis = {
 	$elt : null,
 	selectedSkinIndex : -1,
 	loadCSS : function(url, classes){
-		url = c.baseUrl + url;
+		url = this.baseUrl + url;
 		$('<link class="' + classes + '"></link>')
 			.appendTo('head')
 			.attr({type : 'text/css', rel : 'stylesheet'})
