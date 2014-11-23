@@ -11,7 +11,6 @@
 	
 	
 	* Write contributing doc
-	* License doc
 	* Hide capability
 	* Reset capability	
 	* Test in IE
@@ -20,6 +19,7 @@
 
 var cutis = {
 	id : "cutis",
+	baseUrl : "http://lukenickerson.github.io/ludum-dare-cutis/",
 	skins : [],
 	$elt : null,
 	selectedSkinIndex : -1,
@@ -52,8 +52,8 @@ var cutis = {
 		console.log("Load Skin", c.selectedSkinIndex, s);
 		c.removeSkins();
 		if (!s.dir) s.dir = s.base;
-		c.loadCSS("skins/" + s.dir + "/" + s.base + ".css", "cutis_skin_file");
-		c.loadJS("skins/" + s.dir + "/" + s.base + ".js", "cutis_skin_file");
+		c.loadCSS(c.baseUrl + "skins/" + s.dir + "/" + s.base + ".css", "cutis_skin_file");
+		c.loadJS(c.baseUrl + "skins/" + s.dir + "/" + s.base + ".js", "cutis_skin_file");
 	},
 	removeSkins : function(){
 		$('.cutis_skin_file').remove();
@@ -61,7 +61,7 @@ var cutis = {
 	loadSkinList : function(){
 		var c = this;
 		$.getJSON(
-			"skin_list.json"
+			c.baseUrl + "skin_list.json"
 		).done(function(d){
 			console.log("Loaded", d);
 			c.skins = d;
@@ -85,7 +85,7 @@ var cutis = {
 		var $s = $(
 			'<div class="skins"><p>Select a skin:</p>'
 			+ '<ul class="skinList"></ul>'
-			+ '<p>Skins provided by <a href="">Cutis</a>.</p>'
+			+ '<p>Skins provided by <a href="' + c.baseUrl + '">Cutis</a>.</p>'
 			+ '</div>'
 			);
 		$s.find('.skinList').on("click", "a", function(e){
