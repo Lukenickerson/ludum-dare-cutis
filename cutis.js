@@ -9,10 +9,11 @@ var cutis = {
 	$elt : null,
 	selectedSkinIndex : -1,
 	initAttempt : 0,
+	$ : null, // jQuery reference
 	loadCSS : function(url, classes){
 		var c = this;
 		url = c.baseUrl + url;
-		$('<link class="' + classes + '"></link>')
+		c.$('<link class="' + classes + '"></link>')
 			.appendTo('head')
 			.attr({type : 'text/css', rel : 'stylesheet'})
 			.attr('href', url)
@@ -22,8 +23,9 @@ var cutis = {
 		;
 	},
 	loadJS : function(url, classes){
-		url = this.baseUrl + url;
-		$('<script class="' + classes + '"></script>')
+		var c = this;
+		url = c.baseUrl + url;
+		c.$('<script class="' + classes + '"></script>')
 			.appendTo('body')
 			.attr('src', url)
 			.ready(function(){ 
@@ -49,11 +51,11 @@ var cutis = {
 		c.loadJS("skins/" + s.dir + "/" + s.base + ".js", "cutis_skin_file");
 	},
 	removeSkins : function(){
-		$('.cutis_skin_file').remove();
+		this.$('.cutis_skin_file').remove();
 	},
 	loadSkinList : function(callback){
 		var c = this;
-		$.ajax({
+		this.$.ajax({
 			url: c.baseUrl + "skin_list.json.js"
 			,contentType : "application/javascript"
 			,dataType: "jsonp"
@@ -109,7 +111,7 @@ var cutis = {
 	},
 	build : function(){
 		var c = this;
-		var $s = $(
+		var $s = c.$(
 			'<div class="skins"><p>Select a skin:</p>'
 			+ '<ul class="skinList"></ul>'
 			+ '<p>Skins provided by the community via <a href="' + c.baseUrl + '">Cutis</a>.</p>'
@@ -124,12 +126,12 @@ var cutis = {
 				}
 				e.preventDefault();
 			});
-		var $b = $('<button type="button"><b></b><b></b>Skins</button>')
+		var $b = c.$('<button type="button"><b></b><b></b>Skins</button>')
 			.click(function(){
 				// *** toggle open / closed
 			});
 		
-		c.$elt = $('<div id="' + c.id + '"></div>')
+		c.$elt = c.$('<div id="' + c.id + '"></div>')
 			.append($s).append($b)
 		;		
 	},
@@ -151,8 +153,7 @@ var cutis = {
 				);
 			}
 			jQuery(document).ready(function($){
-				console.log(jQuery, jQuery.fn.jquery);
-				console.log($, $.fn.jquery);
+				c.$ = $;
 				c.build();
 				c.loadSkinList(function(){
 					c.drawSkinList();
