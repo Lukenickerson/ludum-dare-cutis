@@ -16,7 +16,9 @@ var cutis = {
 			.appendTo('head')
 			.attr({type : 'text/css', rel : 'stylesheet'})
 			.attr('href', url)
-			.ready(function(){ console.log("Loaded", url); })
+			.ready(function(){ 
+				//console.log("Loaded", url); 
+			})
 		;
 	},
 	loadJS : function(url, classes){
@@ -24,7 +26,9 @@ var cutis = {
 		$('<script class="' + classes + '"></script>')
 			.appendTo('body')
 			.attr('src', url)
-			.ready(function(){ console.log("Loaded", url); })
+			.ready(function(){ 
+				//console.log("Loaded", url); 
+			})
 		;
 	},
 	loadjQuery : function(callback){
@@ -39,7 +43,7 @@ var cutis = {
 	loadSkin : function(){
 		var c = this;
 		var s = c.skins[c.selectedSkinIndex];
-		console.log("Load Skin", c.selectedSkinIndex, s);
+		//console.log("Load Skin", c.selectedSkinIndex, s);
 		if (!s.dir) s.dir = s.base;
 		c.loadCSS("skins/" + s.dir + "/" + s.base + ".css", "cutis_skin_file");
 		c.loadJS("skins/" + s.dir + "/" + s.base + ".js", "cutis_skin_file");
@@ -78,19 +82,19 @@ var cutis = {
 			c.removeSkins();
 		} else {
 			for(var i = 0; i < c.skins.length; i++){
-				console.log(i, b, c.skins[i].base);
+				//console.log(i, b, c.skins[i].base);
 				if (c.skins[i].base == b) {
 					c.selectSkin(i);
 					return;
 				}
 			}
-			console.log("No skin found", b);
+			console.log("No skin found:", b);
 			c.removeSkins();
 		}
 	},
 	loadSelectedSkin : function(){
 		var skinBase = localStorage.getItem("cutis_selected_skin_base");
-		console.log("Loading last saved skin", skinBase);
+		//console.log("Loading last saved skin", skinBase);
 		this.selectSkinByBase(skinBase);
 	},
 	drawSkinList : function(){
@@ -147,12 +151,14 @@ var cutis = {
 				);
 			}
 			jQuery(document).ready(function($){
+				console.log(jQuery, jQuery.fn.jquery);
+				console.log($, $.fn.jquery);
 				c.build();
 				c.loadSkinList(function(){
 					c.drawSkinList();
 					c.loadSelectedSkin();
 				});
-				c.loadCSS("cutis.css");
+				c.loadCSS("cutis.css", "cutis_main_style");
 				$('body')
 					.find('#' + c.id).remove().end()
 					.append(c.$elt);
