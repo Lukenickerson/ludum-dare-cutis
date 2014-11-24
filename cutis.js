@@ -8,8 +8,10 @@ var cutis = {
 	skins : [],
 	$elt : null,
 	selectedSkinIndex : -1,
+	initAttempt : 0,
 	loadCSS : function(url, classes){
-		url = this.baseUrl + url;
+		var c = this;
+		url = c.baseUrl + url;
 		$('<link class="' + classes + '"></link>')
 			.appendTo('head')
 			.attr({type : 'text/css', rel : 'stylesheet'})
@@ -25,18 +27,19 @@ var cutis = {
 			.ready(function(){ console.log("Loaded", url); })
 		;
 	},
-	selectSkin : function(si){
-		var c = this;
-		c.$elt.find(".cutis_skin_" + c.selectedSkinIndex).removeClass("selected");
-		c.selectedSkinIndex = si;
-		c.loadSkin();
-		c.$elt.find(".cutis_skin_" + si).addClass("selected");
+	loadjQuery : function(callback){
+		var head = document.getElementsByTagName('head')[0];
+		var script = document.createElement('script');
+		script.src = "http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js";
+		script.onload = script.onreadystatechange = function(){
+			callback();
+		}
+		head.appendChild(script);
 	},
 	loadSkin : function(){
 		var c = this;
 		var s = c.skins[c.selectedSkinIndex];
 		console.log("Load Skin", c.selectedSkinIndex, s);
-		c.removeSkins();
 		if (!s.dir) s.dir = s.base;
 		c.loadCSS("skins/" + s.dir + "/" + s.base + ".css", "cutis_skin_file");
 		c.loadJS("skins/" + s.dir + "/" + s.base + ".js", "cutis_skin_file");
@@ -44,7 +47,7 @@ var cutis = {
 	removeSkins : function(){
 		$('.cutis_skin_file').remove();
 	},
-	loadSkinList : function(){
+	loadSkinList : function(callback){
 		var c = this;
 		$.ajax({
 			url: c.baseUrl + "skin_list.json.js"
@@ -52,14 +55,43 @@ var cutis = {
 			,dataType: "jsonp"
 			,jsonpCallback : "data"
 		}).done(function(d){
-			console.log(arguments);
-			//console.log("Loaded", d);
 			c.skins = d;
-			c.drawSkinList();
+			callback();
 		}).fail(function(){
 			console.error("AJAX Fail", arguments);
 		});
 
+	},
+	selectSkin : function(si){
+		var c = this;
+		c.$elt.find(".skinList a").removeClass("selected");
+		c.selectedSkinIndex = si;
+		var s = c.skins[c.selectedSkinIndex];
+		c.removeSkins();
+		c.loadSkin();
+		c.$elt.find(".cutis_skin_" + si).addClass("selected");
+		localStorage.setItem("cutis_selected_skin_base", s.base);
+	},
+	selectSkinByBase : function(b){
+		var c = this;
+		if (b == "original") {
+			c.removeSkins();
+		} else {
+			for(var i = 0; i < c.skins.length; i++){
+				console.log(i, b, c.skins[i].base);
+				if (c.skins[i].base == b) {
+					c.selectSkin(i);
+					return;
+				}
+			}
+			console.log("No skin found", b);
+			c.removeSkins();
+		}
+	},
+	loadSelectedSkin : function(){
+		var skinBase = localStorage.getItem("cutis_selected_skin_base");
+		console.log("Loading last saved skin", skinBase);
+		this.selectSkinByBase(skinBase);
 	},
 	drawSkinList : function(){
 		var c = this;
@@ -82,7 +114,7 @@ var cutis = {
 		$s.find('.skinList').on("click", "a", function(e){
 				var si = parseInt($(this).data("skinindex"));
 				if (si < 0) {
-					c.removeSkins();
+					c.selectSkinByBase("original");
 				} else {
 					c.selectSkin(si);
 				}
@@ -99,14 +131,35 @@ var cutis = {
 	},
 	init : function(){
 		var c = this;
-		c.build();
-		c.loadSkinList();
-		c.loadCSS("cutis.css");
-		$('body')
-			.find('#' + c.id).remove().end()
-			.append(c.$elt);
+		c.initAttempt++;
+		if (typeof jQuery == 'undefined') { // Check for jQuery
+			if (c.initAttempt < 3) {
+				cutis.loadjQuery(function(){
+					cutis.init();
+				});
+			} else {
+				console.error("Couldn't find jQuery so couldn't initialize cutis.");
+			}
+		} else {
+			if (!window.localStorage) {
+				console.error("Your browser does not support localStorage."
+					+ " Cutis will be unable to save your skin selections."
+				);
+			}
+			jQuery(document).ready(function($){
+				c.build();
+				c.loadSkinList(function(){
+					c.drawSkinList();
+					c.loadSelectedSkin();
+				});
+				c.loadCSS("cutis.css");
+				$('body')
+					.find('#' + c.id).remove().end()
+					.append(c.$elt);
+				
+			});
+		}
 	}
 }
-$(document).ready(function(){
-	cutis.init();	
-});
+cutis.init();
+
