@@ -11,14 +11,6 @@ body {
 	width: auto;
 	display: block;
 }
-	.post,
-	.ld-post,
-	.narrowcolumn .post,
-	.narrowcolumn .event
-	{
-		left: initial;
-		width: auto;
-	}
 
 
 #status .section,
@@ -30,10 +22,18 @@ body {
 	color: #ccc;
 }
 
-.post, .ld-post {
+.post, 
+.ld-post,
+.narrowcolumn .post,
+.narrowcolumn .event
+{
 	background: #333;
 	background-image: linear-gradient(to bottom,#000 0%,#333 25%);
 	color: #eee;
+	left: initial;
+	width: 65%;
+	min-width: 10em;
+	max-width: 80em;
 }
 .post .minimize,
 .ld-post .minimize,
@@ -69,7 +69,10 @@ body {
 		color: #74c;
 	}
 	
-	.ld-post .header div:first-child img {
+	.ld-post .header div:first-child img,
+	.ld-admin .header div:first-child img,
+	.ld-sticky .header div:first-child img,
+	.ld-news .header div:first-child img {
 		border-radius: 3em;
 	}
 #footer {
