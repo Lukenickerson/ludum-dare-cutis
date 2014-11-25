@@ -13,6 +13,7 @@
 ,"content_scripts": [
     {
       "matches": ["https://ludumdare.com/*","http://ludumdare.com/*"],
+	  "exclude_matches": ["https://ludumdare.com/compo/wp-admin/*","http://ludumdare.com/compo/wp-admin/*"],
 	  "js": ["cutis_extension.js"]
     }
 ]

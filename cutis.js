@@ -118,7 +118,7 @@ var cutis = {
 			+ '</div>'
 			);
 		$s.find('.skinList').on("click", "a", function(e){
-				var si = parseInt($(this).data("skinindex"));
+				var si = parseInt(c.$(this).data("skinindex"));
 				if (si < 0) {
 					c.selectSkinByBase("original");
 				} else {
